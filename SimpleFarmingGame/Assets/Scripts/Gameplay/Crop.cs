@@ -35,6 +35,20 @@ public class Crop
 //  2. Implement the properties required for the Crop class:
 //  	a. IsMature - a boolean that is true if, and only if, a crop is mature 
 //					  (and not dead). This property is never set.
+    public bool IsMature 
+    { 
+        get
+        {
+            if (MaturityPercentage == 1f && IsDead == false)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        } 
+    }
 //  	b. Value - an integer that represents the current value of a crop. The 
 //				   value must change with maturity percentage and based upon if 
 //				   the crop is dead or alive. This property is never set.
