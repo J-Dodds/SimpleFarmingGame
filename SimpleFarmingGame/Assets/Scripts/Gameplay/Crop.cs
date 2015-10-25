@@ -8,29 +8,29 @@ public class Crop
 //  1. Implement the variables required for the Crop class:
 //  	a. UniqueId - a string representing the unique identifier for the crop. 
 //					  It must be different for every crop.
-    public string UniqueId = "crop1";
+    public string UniqueId;
 //  	b. TimeToMature - a floating point number that represents the time in 
 //						  seconds for a crop to fully mature.
-    public float TimeToMature = 15f;
+    public float TimeToMature;
 //  	c. DeathChance - a floating point number between 0 and 1 that represents 
 //						 the percentage chance of a crop dying every time the death 
 //						 check happens.
-    public float DeathChance = 0.2f;
+    public float DeathChance;
 //  	d. MaturityPercentage - a floating point number between 0 and 1 that represents 
 //								the maturity percentage of a crop. A fully mature crop 
 //								will have a maturity percentage of 1.
-    public float MaturityPercentage = 0.0f;
+    public float MaturityPercentage;
 //  	e. IntervalBetweenDeathChecks - the time in seconds between performing death 
 //										checks for a crop.
-    public float IntervalBetweenDeathChecks = 4;
+    public float IntervalBetweenDeathChecks;
 //  	f. IsDead - a boolean that is true if a crop is dead and false if a crop is alive.
-    public bool IsDead = false;
+    public bool IsDead;
 //  	g. Name - a string that represents the name to display for a crop.
-    public string Name = "Grumpy Cat Grass";
+    public string Name;
 //  	h. Cost - an integer that represents how much it costs to plant a crop.
-    public int Cost = 100;
+    public int Cost;
 //  	i. MaxValue - an integer that represents the maximum income from a crop.
-    public int MaxValue = 200;
+    public int MaxValue;
 
 //  2. Implement the properties required for the Crop class:
 //  	a. IsMature - a boolean that is true if, and only if, a crop is mature 
@@ -56,7 +56,7 @@ public class Crop
     {
         get
         {
-            if (IsDead = false)
+            if (IsDead == false)
             {
                 return Convert.ToInt32((Cost * MaturityPercentage) * 2);
             }
@@ -72,8 +72,32 @@ public class Crop
 //		   unique identifier to use for the crop.
 //  		i.  The variables (Name, Cost etc) must all be set in the constructor.
 //  		ii. The values may be set based on the unique identifier for the crop.
+    public Crop (string _UniqueId)
+    {
+        UniqueId = _UniqueId;
+        TimeToMature = 15f;
+        DeathChance = 0.2f;
+        MaturityPercentage = 0.0f;
+        IntervalBetweenDeathChecks = 4;
+        IsDead = false; 
+        Name = "Grumpy Cat Weed";
+        Cost = 100;
+        MaxValue = 200;
+    }
 //  	b. The other constructor takes another crop as a parameter.
 //  		i.  The constructor must copy all of the values from the passed in crop.
+    public Crop (Crop previousCrop)
+    {
+        UniqueId = previousCrop.UniqueId;
+        TimeToMature = previousCrop.TimeToMature;
+        DeathChance = previousCrop.DeathChance;
+        MaturityPercentage = previousCrop.MaturityPercentage;
+        IntervalBetweenDeathChecks = previousCrop.IntervalBetweenDeathChecks;
+        IsDead = previousCrop.IsDead;
+        Name = previousCrop.Name;
+        Cost = previousCrop.Cost;
+        MaxValue = previousCrop.MaxValue;
+    }
 
 //  4. Implement the Update function for the Crop class:
 //  	a. The Update function takes a single parameter that is a floating point 
