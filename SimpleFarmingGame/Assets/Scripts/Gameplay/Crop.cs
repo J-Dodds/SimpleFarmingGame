@@ -1,24 +1,36 @@
 ﻿using UnityEngine;
+using System;
+using System.Collections.Generic;
 
-public class Crop {
+public class Crop 
+{
 
 //  1. Implement the variables required for the Crop class:
 //  	a. UniqueId - a string representing the unique identifier for the crop. 
 //					  It must be different for every crop.
+    public string UniqueId = "crop1";
 //  	b. TimeToMature - a floating point number that represents the time in 
 //						  seconds for a crop to fully mature.
+    public float TimeToMature = 15f;
 //  	c. DeathChance - a floating point number between 0 and 1 that represents 
 //						 the percentage chance of a crop dying every time the death 
 //						 check happens.
+    public float DeathChance = 0.2f;
 //  	d. MaturityPercentage - a floating point number between 0 and 1 that represents 
 //								the maturity percentage of a crop. A fully mature crop 
 //								will have a maturity percentage of 1.
+    public float MaturityPercentage = 0.0f;
 //  	e. IntervalBetweenDeathChecks - the time in seconds between performing death 
 //										checks for a crop.
+    public float IntervalBetweenDeathChecks = 4;
 //  	f. IsDead - a boolean that is true if a crop is dead and false if a crop is alive.
+    public bool IsDead = false;
 //  	g. Name - a string that represents the name to display for a crop.
+    public string Name = "Grumpy Cat Grass";
 //  	h. Cost - an integer that represents how much it costs to plant a crop.
+    public int Cost = 100;
 //  	i. MaxValue - an integer that represents the maximum income from a crop.
+    public int MaxValue = 200;
 
 //  2. Implement the properties required for the Crop class:
 //  	a. IsMature - a boolean that is true if, and only if, a crop is mature 
