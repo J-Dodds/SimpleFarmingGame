@@ -52,6 +52,20 @@ public class Crop
 //  	b. Value - an integer that represents the current value of a crop. The 
 //				   value must change with maturity percentage and based upon if 
 //				   the crop is dead or alive. This property is never set.
+    public int Value
+    {
+        get
+        {
+            if (IsDead = false)
+            {
+                return Convert.ToInt32((Cost * MaturityPercentage) * 2);
+            }
+            else
+            {
+                return Convert.ToInt32((Cost * MaturityPercentage) / 2);
+            }
+        }
+    }
 
 //  3. Implement the constructors for the Crop class. There must be two:
 //  	a. One constructor takes a string as a parameter. The string represents the 
