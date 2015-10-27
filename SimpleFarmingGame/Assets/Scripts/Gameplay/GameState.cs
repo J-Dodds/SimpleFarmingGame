@@ -5,9 +5,12 @@ using System.Reflection;
 public class GameState {
 //  5. Implement the variables required for the GameState class:
 //  	a. AvailableCrops - a list of Crop objects.
+    public List<string> AvailableCrops = new List<string>();
 //  	b. PlantedCrops - a dictionary that maps from MonoBehaviour objects 
 // 						  to Crop objects.
+//                      public Dictionary<MonoBehavior, Crop> PlantedCrops = new Dictionary<MonoBehaviour, Crop>();
 //  	c. Money - an integer representing the player's current funds.
+    public int Money;
 
 //  6. Implement the constructor for the GameState:
 //  	a. The constructor must take in a single parameter that is the number of crops.
