@@ -111,11 +111,11 @@ public class Crop
     {
         while (IsDead == false)
         {
-            float RandomNumber = random.Next(0.0f, 1.1f);
+            double RandomNumber = random.NextDouble ();
 
             if (timeElapsed % IntervalBetweenDeathChecks == 0)
             {
-                if (RandomNumber <= 0.2)
+                if (RandomNumber <= DeathChance)
                 {
                     IsDead = true;
                 }

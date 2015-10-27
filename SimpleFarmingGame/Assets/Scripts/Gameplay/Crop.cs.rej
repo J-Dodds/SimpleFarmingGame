@@ -1,0 +1,9 @@
+diff a/SimpleFarmingGame/Assets/Scripts/Gameplay/Crop.cs b/SimpleFarmingGame/Assets/Scripts/Gameplay/Crop.cs	(rejected hunks)
+@@ -4,7 +4,6 @@
+ 
+ public class Crop
+ {
+-    System.Random random = new System.Random();
+     //  1. Implement the variables required for the Crop class:
+     //  	a. UniqueId - a string representing the unique identifier for the crop. 
+     //					  It must be different for every crop.
