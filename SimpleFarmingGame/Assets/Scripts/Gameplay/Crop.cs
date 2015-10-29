@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Crop
 {
     System.Random random = new System.Random();
+
     //  1. Implement the variables required for the Crop class:
     //  	a. UniqueId - a string representing the unique identifier for the crop. 
     //					  It must be different for every crop.
@@ -58,11 +59,11 @@ public class Crop
         {
             if (IsDead == false)
             {
-                return Convert.ToInt32((Cost * MaturityPercentage) * 2);
+                return Cost * 2;
             }
             else
             {
-                return Convert.ToInt32((Cost * MaturityPercentage) / 2);
+                return Cost * 0.5;
             }
         }
     }
@@ -75,12 +76,12 @@ public class Crop
     public Crop(string _UniqueId)
     {
         UniqueId = _UniqueId;
-        TimeToMature = 15f;
+        TimeToMature = 10f;
         DeathChance = 0.2f;
         MaturityPercentage = 0.0f;
-        IntervalBetweenDeathChecks = 4;
+        IntervalBetweenDeathChecks = 2f;
         IsDead = false;
-        Name = "Grumpy Cat Weed";
+        Name = "1";
         Cost = 100;
         MaxValue = 200;
     }
@@ -109,30 +110,24 @@ public class Crop
     //		   on any living crop regardless of maturity.
     public void Update(float timeElapsed)
     {
-        while (IsDead == false)
-        {
-            double RandomNumber = random.NextDouble ();
+        double RandomNumber = random.NextDouble();
 
-            if (timeElapsed % IntervalBetweenDeathChecks == 0)
+        MaturityPercentage = MaturityPercentage + timeElapsed;
+
+        if (timeElapsed % IntervalBetweenDeathChecks == 0)
+        {
+            if (RandomNumber >= DeathChance)
             {
-                if (RandomNumber <= DeathChance)
-                {
-                    IsDead = true;
-                }
-                else
-                {
-                    IsDead = false;
-                }
+                IsDead = true;
             }
             else
             {
                 IsDead = false;
             }
-            
-            for (float maturity = 0.0f; maturity < 1f; ++maturity)
-            {
-                MaturityPercentage = maturity;
-            }
+        }
+        else
+        {
+            IsDead = false;
         }
     }
 }
