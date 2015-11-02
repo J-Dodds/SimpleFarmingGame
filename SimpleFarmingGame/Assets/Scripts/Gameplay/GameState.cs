@@ -6,9 +6,11 @@ public class GameState {
 //  5. Implement the variables required for the GameState class:
 //  	a. AvailableCrops - a list of Crop objects.
     public List<string> AvailableCrops = new List<string>();
+
 //  	b. PlantedCrops - a dictionary that maps from MonoBehaviour objects 
 // 						  to Crop objects.
-//                      public Dictionary<MonoBehavior, Crop> PlantedCrops = new Dictionary<MonoBehaviour, Crop>();
+    public Dictionary<MonoBehaviour, Crop> PlantedCrops = new Dictionary<MonoBehaviour, Crop>();
+
 //  	c. Money - an integer representing the player's current funds.
     public int Money;
 
@@ -16,6 +18,15 @@ public class GameState {
 //  	a. The constructor must take in a single parameter that is the number of crops.
 //  	b. The constructor must populate the AvailableCrops list and set the initial 
 //		   funds that the player has.
+    public GameState (int cropNumber)
+    {
+        AvailableCrops.Add ("Grumpy Cat Grass");
+        AvailableCrops.Add ("Cheesecake Tree");
+        AvailableCrops.Add ("Source Tree");
+        AvailableCrops.Add ("Radioactive Raddishes");
+        AvailableCrops.Add ("Post-Apocalyptic Peas");
+        Money = 500;
+    }
 
 //  7. Implement the following functions in the GameState class:
 //  	a. PlantCrop - Plants a crop on a specific tile.
