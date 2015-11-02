@@ -59,11 +59,11 @@ public class Crop
         {
             if (IsDead == false)
             {
-                return Cost * 2;
+                return Convert.ToInt32(Cost * MaturityPercentage) * 2;
             }
             else
             {
-                return Cost * 0.5;
+                return Convert.ToInt32(Cost * MaturityPercentage) / 2;
             }
         }
     }
@@ -112,9 +112,16 @@ public class Crop
     {
         double RandomNumber = random.NextDouble();
 
-        MaturityPercentage = MaturityPercentage + timeElapsed;
+        if (MaturityPercentage < 1f)
+        {
+            MaturityPercentage = MaturityPercentage + (timeElapsed / TimeToMature);
+        }
+        else
+        {
+            MaturityPercentage = 1f;
+        }
 
-        if (timeElapsed % IntervalBetweenDeathChecks == 0)
+        if (timeElapsed % IntervalBetweenDeathChecks == 0)     
         {
             if (RandomNumber >= DeathChance)
             {
@@ -124,10 +131,6 @@ public class Crop
             {
                 IsDead = false;
             }
-        }
-        else
-        {
-            IsDead = false;
         }
     }
 }
