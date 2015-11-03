@@ -79,7 +79,7 @@ public class Crop
         TimeToMature = 10f;
         DeathChance = 0.2f;
         MaturityPercentage = 0.0f;
-        IntervalBetweenDeathChecks = 2f;
+        IntervalBetweenDeathChecks = 0.1f;
         IsDead = false;
         Name = "1";
         Cost = 100;
@@ -112,25 +112,25 @@ public class Crop
     {
         double RandomNumber = random.NextDouble();
 
-        if (MaturityPercentage < 1f)
+        if (MaturityPercentage < 1.0f)
         {
             MaturityPercentage = MaturityPercentage + (timeElapsed / TimeToMature);
-        }
-        else
-        {
-            MaturityPercentage = 1f;
-        }
 
-        if (timeElapsed % IntervalBetweenDeathChecks == 0)     
+            if (timeElapsed >= IntervalBetweenDeathChecks)
+            {
+                if (RandomNumber < DeathChance)
+                {
+                    IsDead = true;
+                }
+                else
+                {
+                    IsDead = false;
+                }
+            }
+        }
+        else if (MaturityPercentage >= 1.0f)
         {
-            if (RandomNumber >= DeathChance)
-            {
-                IsDead = true;
-            }
-            else
-            {
-                IsDead = false;
-            }
+            MaturityPercentage = 1.0f;
         }
     }
 }
