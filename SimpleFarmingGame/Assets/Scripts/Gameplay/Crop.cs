@@ -77,7 +77,7 @@ public class Crop
     {
         UniqueId = _UniqueId;
         TimeToMature = 10f;
-        DeathChance = 0.2f;
+        DeathChance = 0.3f;
         MaturityPercentage = 0.0f;
         IntervalBetweenDeathChecks = 0.1f;
         IsDead = false;
@@ -118,7 +118,7 @@ public class Crop
 
             if (timeElapsed >= IntervalBetweenDeathChecks)
             {
-                if (RandomNumber < DeathChance)
+                if (RandomNumber <= DeathChance)
                 {
                     IsDead = true;
                 }
