@@ -191,6 +191,18 @@ public class Crop
         else if (MaturityPercentage >= 1.0f && IsDead == false)
         {
             MaturityPercentage = 1.0f;              //Makes sure that the MaturityPercentage wont increase past 1 and will stay at 1 if it reaches 1 before dying.
+
+            if (timeElapsed >= IntervalBetweenDeathChecks)
+            {
+                if (RandomNumber < (DeathChance - 0.1)|| IsDead == true)
+                {
+                    IsDead = true;
+                }
+                else
+                {
+                    IsDead = false;
+                }
+            }
         }
     }
 }
