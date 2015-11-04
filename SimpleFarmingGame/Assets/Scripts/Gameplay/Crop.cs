@@ -73,17 +73,77 @@ public class Crop
     //		   unique identifier to use for the crop.
     //  		i.  The variables (Name, Cost etc) must all be set in the constructor.
     //  		ii. The values may be set based on the unique identifier for the crop.
-    public Crop(string _UniqueId)
+    public Crop (string _uniqueId)
     {
-        UniqueId = _UniqueId;
-        TimeToMature = 10f;
-        DeathChance = 0.3f;
-        MaturityPercentage = 0.0f;
-        IntervalBetweenDeathChecks = 0.1f;
-        IsDead = false;
-        Name = "1";
-        Cost = 100;
-        MaxValue = 200;
+        switch (_uniqueId)
+        {
+            case "Crop_1":
+                {
+                    UniqueId = _uniqueId;
+                    TimeToMature = 10f;
+                    DeathChance = 0.3f;
+                    MaturityPercentage = 0.0f;
+                    IntervalBetweenDeathChecks = 0.1f;
+                    IsDead = false;
+                    Name = "Source Tree";
+                    Cost = 200;
+                    MaxValue = 400;
+                    break;
+                }
+            case "Crop_2":
+                {
+                    UniqueId = _uniqueId;
+                    TimeToMature = 11f;
+                    DeathChance = 0.3f;
+                    MaturityPercentage = 0.0f;
+                    IntervalBetweenDeathChecks = 0.1f;
+                    IsDead = false;
+                    Name = "Cheesecake Tree";
+                    Cost = 300;
+                    MaxValue = 600;
+                    break;
+                }
+            case "Crop_3":
+                {
+                    UniqueId = _uniqueId;
+                    TimeToMature = 10f;
+                    DeathChance = 0.3f;
+                    MaturityPercentage = 0.0f;
+                    IntervalBetweenDeathChecks = 0.1f;
+                    IsDead = false;
+                    Name = "Post-Apocalyptic Peas";
+                    Cost = 400;
+                    MaxValue = 800;
+                    break;
+                }
+            case "Crop_4":
+                {
+                    UniqueId = _uniqueId;
+                    TimeToMature = 10f;
+                    DeathChance = 0.3f;
+                    MaturityPercentage = 0.0f;
+                    IntervalBetweenDeathChecks = 0.1f;
+                    IsDead = false;
+                    Name = "Radioactive Raddishes";
+                    Cost = 500;
+                    MaxValue = 1000;
+                    break;
+                }
+            default:
+                {
+                    UniqueId = _uniqueId;
+                    TimeToMature = 10f;
+                    DeathChance = 0.3f;
+                    MaturityPercentage = 0.0f;
+                    IntervalBetweenDeathChecks = 0.1f;
+                    IsDead = false;
+                    Name = "Grumpy Cat Grass";
+                    Cost = 100;
+                    MaxValue = 200;
+                    break;
+                }
+        }
+                
     }
     //  	b. The other constructor takes another crop as a parameter.
     //  		i.  The constructor must copy all of the values from the passed in crop.
@@ -118,7 +178,7 @@ public class Crop
 
             if (timeElapsed >= IntervalBetweenDeathChecks)
             {
-                if (RandomNumber <= DeathChance)
+                if (RandomNumber < DeathChance || IsDead == true)
                 {
                     IsDead = true;
                 }
@@ -128,9 +188,10 @@ public class Crop
                 }
             }
         }
-        else if (MaturityPercentage >= 1.0f)
+        else if (MaturityPercentage >= 1.0f && IsDead == false)
         {
-            MaturityPercentage = 1.0f;
+            MaturityPercentage = 1.0f;              //Makes sure that the MaturityPercentage wont increase past 1 and will stay at 1 if it reaches 1 before dying.
         }
     }
 }
+ 
