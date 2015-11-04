@@ -81,9 +81,9 @@ public class Crop
                 {
                     UniqueId = _uniqueId;
                     TimeToMature = 10f;
-                    DeathChance = 0.3f;
+                    DeathChance = 0.2f;
                     MaturityPercentage = 0.0f;
-                    IntervalBetweenDeathChecks = 0.1f;
+                    IntervalBetweenDeathChecks = 5f;
                     IsDead = false;
                     Name = "Source Tree";
                     Cost = 200;
@@ -96,7 +96,7 @@ public class Crop
                     TimeToMature = 11f;
                     DeathChance = 0.3f;
                     MaturityPercentage = 0.0f;
-                    IntervalBetweenDeathChecks = 0.1f;
+                    IntervalBetweenDeathChecks = 5f;
                     IsDead = false;
                     Name = "Cheesecake Tree";
                     Cost = 300;
@@ -109,7 +109,7 @@ public class Crop
                     TimeToMature = 10f;
                     DeathChance = 0.3f;
                     MaturityPercentage = 0.0f;
-                    IntervalBetweenDeathChecks = 0.1f;
+                    IntervalBetweenDeathChecks = 5f;
                     IsDead = false;
                     Name = "Post-Apocalyptic Peas";
                     Cost = 400;
@@ -122,7 +122,7 @@ public class Crop
                     TimeToMature = 10f;
                     DeathChance = 0.3f;
                     MaturityPercentage = 0.0f;
-                    IntervalBetweenDeathChecks = 0.1f;
+                    IntervalBetweenDeathChecks = 5f;
                     IsDead = false;
                     Name = "Radioactive Raddishes";
                     Cost = 500;
@@ -135,7 +135,7 @@ public class Crop
                     TimeToMature = 10f;
                     DeathChance = 0.3f;
                     MaturityPercentage = 0.0f;
-                    IntervalBetweenDeathChecks = 0.1f;
+                    IntervalBetweenDeathChecks = 0.5f;
                     IsDead = false;
                     Name = "Grumpy Cat Grass";
                     Cost = 100;
@@ -171,13 +171,15 @@ public class Crop
     public void Update(float timeElapsed)
     {
         double RandomNumber = random.NextDouble();
+        IntervalBetweenDeathChecks = IntervalBetweenDeathChecks - timeElapsed;
 
         if (MaturityPercentage < 1.0f)
         {
             MaturityPercentage = MaturityPercentage + (timeElapsed / TimeToMature);
 
-            if (timeElapsed >= IntervalBetweenDeathChecks)
+            if (IntervalBetweenDeathChecks <= 0.0f)
             {
+                IntervalBetweenDeathChecks = 5f;
                 if (RandomNumber < DeathChance || IsDead == true)
                 {
                     IsDead = true;
@@ -192,9 +194,10 @@ public class Crop
         {
             MaturityPercentage = 1.0f;              //Makes sure that the MaturityPercentage wont increase past 1 and will stay at 1 if it reaches 1 before dying.
 
-            if (timeElapsed >= IntervalBetweenDeathChecks)
+            if (IntervalBetweenDeathChecks <= 0.0f)
             {
-                if (RandomNumber < (DeathChance - 0.1)|| IsDead == true)
+                IntervalBetweenDeathChecks = 5f;
+                if (RandomNumber < DeathChance || IsDead == true)
                 {
                     IsDead = true;
                 }
