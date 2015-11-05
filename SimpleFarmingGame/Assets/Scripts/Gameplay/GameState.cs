@@ -19,6 +19,11 @@ public class GameState
 //  	a. The constructor must take in a single parameter that is the number of crops.
 //  	b. The constructor must populate the AvailableCrops list and set the initial 
 //		   funds that the player has.
+    public GameState (int numberOfCrops)
+    {
+        Money = 500;
+        AvailableCrops.Add(numberOfCrops);
+    }
 
 //  7. Implement the following functions in the GameState class:
 //  	a. PlantCrop - Plants a crop on a specific tile.
