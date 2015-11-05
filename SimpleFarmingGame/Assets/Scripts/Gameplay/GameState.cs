@@ -10,6 +10,7 @@ public class GameState
 
 //  	b. PlantedCrops - a dictionary that maps from MonoBehaviour objects 
 // 						  to Crop objects.
+    public Dictionary<MonoBehaviour, object> PlantedCrops = new Dictionary<MonoBehaviour, object>();
 
 //  	c. Money - an integer representing the player's current funds.
     public int Money;
