@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-public class GameState {
+public class GameState 
+{
 //  5. Implement the variables required for the GameState class:
 //  	a. AvailableCrops - a list of Crop objects.
-    public List<string> AvailableCrops = new List<string>();
+    public List<object> AvailableCrops = new List<object>();
 
 //  	b. PlantedCrops - a dictionary that maps from MonoBehaviour objects 
 // 						  to Crop objects.
-    public Dictionary<MonoBehaviour, Crop> PlantedCrops = new Dictionary<MonoBehaviour, Crop>();
 
 //  	c. Money - an integer representing the player's current funds.
     public int Money;
@@ -18,15 +18,6 @@ public class GameState {
 //  	a. The constructor must take in a single parameter that is the number of crops.
 //  	b. The constructor must populate the AvailableCrops list and set the initial 
 //		   funds that the player has.
-    public GameState (int cropNumber)
-    {
-        AvailableCrops.Add ("Grumpy Cat Grass");
-        AvailableCrops.Add ("Cheesecake Tree");
-        AvailableCrops.Add ("Source Tree");
-        AvailableCrops.Add ("Radioactive Raddishes");
-        AvailableCrops.Add ("Post-Apocalyptic Peas");
-        Money = 500;
-    }
 
 //  7. Implement the following functions in the GameState class:
 //  	a. PlantCrop - Plants a crop on a specific tile.
@@ -44,12 +35,23 @@ public class GameState {
 //				   the crop. If there are not enough funds then it must return false.
 //  			2. If there are enough funds then it must update the player's funds, 
 //				   plant a new crop on the tile and return true.
+    public bool PlantCrop (string _uniqueId_, MonoBehaviour cropToPlant)
+    {
+        if (cropToPlant == true)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
 //  	b. ClearCrop - Removes a crop from a specific tile.
 //  		i.   The function takes a single parameter that is a MonoBehaviour 
 //				 representing the tile to clear.
-//  		ii.  The function has no return value.
-
+//  		ii.  The function has no return value. 
+  
 //  	c. AttemptToHarvestCrop - Harvests a crop on a specific tile (if the crop is present).
 //  		i.   The function takes a single parameter that is a MonoBehaviour representing 
 //				 the tile to try to harvest.
