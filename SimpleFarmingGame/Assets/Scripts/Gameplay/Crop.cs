@@ -81,7 +81,7 @@ public class Crop
                 {
                     UniqueId = _uniqueId;
                     TimeToMature = 10f;
-                    DeathChance = 0.2f;
+                    DeathChance = 0.1f;
                     MaturityPercentage = 0.0f;
                     IntervalBetweenDeathChecks = 5f;
                     IsDead = false;
@@ -94,7 +94,7 @@ public class Crop
                 {
                     UniqueId = _uniqueId;
                     TimeToMature = 11f;
-                    DeathChance = 0.3f;
+                    DeathChance = 0.1f;
                     MaturityPercentage = 0.0f;
                     IntervalBetweenDeathChecks = 5f;
                     IsDead = false;
@@ -106,8 +106,8 @@ public class Crop
             case "Crop_3":
                 {
                     UniqueId = _uniqueId;
-                    TimeToMature = 10f;
-                    DeathChance = 0.3f;
+                    TimeToMature = 12f;
+                    DeathChance = 0.1f;
                     MaturityPercentage = 0.0f;
                     IntervalBetweenDeathChecks = 5f;
                     IsDead = false;
@@ -119,8 +119,8 @@ public class Crop
             case "Crop_4":
                 {
                     UniqueId = _uniqueId;
-                    TimeToMature = 10f;
-                    DeathChance = 0.3f;
+                    TimeToMature = 13f;
+                    DeathChance = 0.1f;
                     MaturityPercentage = 0.0f;
                     IntervalBetweenDeathChecks = 5f;
                     IsDead = false;
@@ -132,8 +132,8 @@ public class Crop
             default:
                 {
                     UniqueId = _uniqueId;
-                    TimeToMature = 10f;
-                    DeathChance = 0.3f;
+                    TimeToMature = 14f;
+                    DeathChance = 0.1f;
                     MaturityPercentage = 0.0f;
                     IntervalBetweenDeathChecks = 0.5f;
                     IsDead = false;
