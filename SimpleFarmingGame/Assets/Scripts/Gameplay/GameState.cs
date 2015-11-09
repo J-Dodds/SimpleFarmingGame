@@ -6,11 +6,11 @@ public class GameState
 {
 //  5. Implement the variables required for the GameState class:
 //  	a. AvailableCrops - a list of Crop objects.
-    public List<object> AvailableCrops = new List<object>();
+    public List<Crop> AvailableCrops = new List<Crop>();
 
 //  	b. PlantedCrops - a dictionary that maps from MonoBehaviour objects 
 // 						  to Crop objects.
-    public Dictionary<MonoBehaviour, object> PlantedCrops = new Dictionary<MonoBehaviour, object>();
+    public Dictionary<MonoBehaviour, Crop> PlantedCrops = new Dictionary<MonoBehaviour, Crop>();
 
 //  	c. Money - an integer representing the player's current funds.
     public int Money;
@@ -22,7 +22,11 @@ public class GameState
     public GameState (int numberOfCrops)
     {
         Money = 500;
-        AvailableCrops.Add(numberOfCrops);
+        AvailableCrops.Add(new Crop("Crop_1"));
+        AvailableCrops.Add(new Crop("Crop_2"));
+        AvailableCrops.Add(new Crop("Crop_3"));
+        AvailableCrops.Add(new Crop("Crop_4"));
+        AvailableCrops.Add(new Crop("Crop_5"));
     }
 
 //  7. Implement the following functions in the GameState class:
@@ -73,9 +77,9 @@ public class GameState
 //  			3. Clear the crop from the tile.
     public void AttemptToHarvestCrop (MonoBehaviour tileToHarvest)
     {
-        if (tileToHarvest != null)
+        if (tileToHarvest != null)      //not right
         {
-            tileToHarvest = null;
+            tileToHarvest = null;      //not right
         }
     }
 
@@ -84,6 +88,7 @@ public class GameState
 //			     (delta time) since the last time update was called.
 //  		ii.  The function has no return value.
 //  		iii. The function must update all of the crops.
+
 
 //  	e. GetCropState - Retrieves the current state of a crop on a specific tile.
 //  		i.   The function takes four parameters:
@@ -96,6 +101,10 @@ public class GameState
 //  		ii.  The function returns no values.
 //  		iii. The function must locate the crop for the specific tile and must 
 //				 retrieve the required information.
+    public void GetCropState (MonoBehaviour tileDetails, float maturityPercentage, out bool isMature, bool isDead)
+    {
+
+    }
 
 //  	f. UniqueIdForCropAtIndex - Retrieves the unique identifier for an available crop.
 //  		i.   The function takes a single parameter that is an integer. The integer is 
