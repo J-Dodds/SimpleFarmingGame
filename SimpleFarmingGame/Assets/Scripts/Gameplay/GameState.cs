@@ -100,7 +100,10 @@ public class GameState
 //			     (delta time) since the last time update was called.
 //  		ii.  The function has no return value.
 //  		iii. The function must update all of the crops.
-
+    public void Update(float timeElapsed)
+    {
+        Crop.Update(timeElapsed);
+    }
 
 //  	e. GetCropState - Retrieves the current state of a crop on a specific tile.
 //  		i.   The function takes four parameters:
@@ -113,6 +116,12 @@ public class GameState
 //  		ii.  The function returns no values.
 //  		iii. The function must locate the crop for the specific tile and must 
 //				 retrieve the required information.
+    public void GetCropState (MonoBehaviour cropDetail, out float maturityPercentage, bool isMature, bool isDead)
+    {
+        PlantedCrops[cropDetail].isMature;
+        PlantedCrops[cropDetail].isDead;
+        PlantedCrops[cropDetail].maturityPercentage;
+    }
 
 //  	f. UniqueIdForCropAtIndex - Retrieves the unique identifier for an available crop.
 //  		i.   The function takes a single parameter that is an integer. The integer is 
