@@ -72,6 +72,10 @@ public class GameState
 //  		i.   The function takes a single parameter that is a MonoBehaviour 
 //				 representing the tile to clear.
 //  		ii.  The function has no return value. 
+    public void ClearCrop(MonoBehaviour tileToClear)
+    {
+        PlantedCrops.Remove(tileToClear);
+    }
   
 //  	c. AttemptToHarvestCrop - Harvests a crop on a specific tile (if the crop is present).
 //  		i.   The function takes a single parameter that is a MonoBehaviour representing 
