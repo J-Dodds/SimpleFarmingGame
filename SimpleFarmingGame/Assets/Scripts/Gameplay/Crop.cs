@@ -4,38 +4,37 @@ using System.Collections.Generic;
 
 public class Crop
 {
+    //Able to use random generator
     System.Random random = new System.Random();
 
-    //  1. Implement the variables required for the Crop class:
-    //  	a. UniqueId - a string representing the unique identifier for the crop. 
-    //					  It must be different for every crop.
+    //String unique to each crop
     public string UniqueId;
-    //  	b. TimeToMature - a floating point number that represents the time in 
-    //						  seconds for a crop to fully mature.
+
+    //Float representing the amount of time it takes for a crop to mature
     public float TimeToMature;
-    //  	c. DeathChance - a floating point number between 0 and 1 that represents 
-    //						 the percentage chance of a crop dying every time the death 
-    //						 check happens.
+
+    //Float representing a crops chance to die in each death check
     public float DeathChance;
-    //  	d. MaturityPercentage - a floating point number between 0 and 1 that represents 
-    //								the maturity percentage of a crop. A fully mature crop 
-    //								will have a maturity percentage of 1.
+
+    //Float representing the maturity of a crop with 1 being equal to 100%
     public float MaturityPercentage;
-    //  	e. IntervalBetweenDeathChecks - the time in seconds between performing death 
-    //										checks for a crop.
+
+    //Float representing the time between each death check
     public float IntervalBetweenDeathChecks;
-    //  	f. IsDead - a boolean that is true if a crop is dead and false if a crop is alive.
+
+    //Bool representing whether or not the crop is alive, True = dead, False = Alive
     public bool IsDead;
-    //  	g. Name - a string that represents the name to display for a crop.
+
+    //String representing a crops name
     public string Name;
-    //  	h. Cost - an integer that represents how much it costs to plant a crop.
+
+    //Int representing the cost of a crop
     public int Cost;
-    //  	i. MaxValue - an integer that represents the maximum income from a crop.
+
+    //Int representing the max value from a crop when sold
     public int MaxValue;
 
-    //  2. Implement the properties required for the Crop class:
-    //  	a. IsMature - a boolean that is true if, and only if, a crop is mature 
-    //					  (and not dead). This property is never set.
+    //Property that returns true if, and only if, a crop is mature and not dead, else it returns dead
     public bool IsMature
     {
         get
@@ -50,9 +49,8 @@ public class Crop
             }
         }
     }
-    //  	b. Value - an integer that represents the current value of a crop. The 
-    //				   value must change with maturity percentage and based upon if 
-    //				   the crop is dead or alive. This property is never set.
+
+    //Property that returns an int that is the amount a crop is worth when sold
     public int Value
     {
         get
@@ -68,11 +66,7 @@ public class Crop
         }
     }
 
-    //  3. Implement the constructors for the Crop class. There must be two:
-    //  	a. One constructor takes a string as a parameter. The string represents the 
-    //		   unique identifier to use for the crop.
-    //  		i.  The variables (Name, Cost etc) must all be set in the constructor.
-    //  		ii. The values may be set based on the unique identifier for the crop.
+    //Constructor that gives all the data for a crop value based on the given UniqueId
     public Crop (string _uniqueId)
     {
         switch (_uniqueId)
@@ -145,8 +139,7 @@ public class Crop
         }
                 
     }
-    //  	b. The other constructor takes another crop as a parameter.
-    //  		i.  The constructor must copy all of the values from the passed in crop.
+    //Constructor that stores previously passed in crops, so that all crops can be present at once
     public Crop(Crop previousCrop)
     {
         UniqueId = previousCrop.UniqueId;
@@ -160,24 +153,17 @@ public class Crop
         MaxValue = previousCrop.MaxValue;
     }
 
-    //  4. Implement the Update function for the Crop class:
-    //  	a. The Update function takes a single parameter that is a floating point 
-    //		   representing the time elapsed (delta time) since Update was last called.
-    //  	b. The Update function does not return any values.
-    //  	c. It must update the maturity percentage for the crop (if the crop is alive).
-    //  	d. The Update function must perform the death check and flag the crop as dead 
-    //		   if required. The death check must be performed, at the required interval, 
-    //		   on any living crop regardless of maturity.
+    //Function that performs all the calculation for the crop class
     public void Update(float timeElapsed)
     {
         double RandomNumber = random.NextDouble();
-        IntervalBetweenDeathChecks = IntervalBetweenDeathChecks - timeElapsed;
+        IntervalBetweenDeathChecks = IntervalBetweenDeathChecks - timeElapsed;              //Lowers IntervalBetweenDeathChecks
 
         if (MaturityPercentage < 1.0f)
         {
-            MaturityPercentage = MaturityPercentage + (timeElapsed / TimeToMature);
+            MaturityPercentage = MaturityPercentage + (timeElapsed / TimeToMature);         //Increases MaturityPercentage
 
-            if (IntervalBetweenDeathChecks <= 0.0f)
+            if (IntervalBetweenDeathChecks <= 0.0f)                                         //Performs the death check
             {
                 IntervalBetweenDeathChecks = 5f;
                 if (RandomNumber < DeathChance || IsDead == true)
@@ -190,9 +176,9 @@ public class Crop
                 }
             }
         }
-        else if (MaturityPercentage >= 1.0f && IsDead == false)
+        else if (MaturityPercentage >= 1.0f && IsDead == false)                               //Makes sure that the MaturityPercentage wont increase past 1 and will stay at 1 if it reaches 1 before dying.
         {
-            MaturityPercentage = 1.0f;              //Makes sure that the MaturityPercentage wont increase past 1 and will stay at 1 if it reaches 1 before dying.
+            MaturityPercentage = 1.0f;             
 
             if (IntervalBetweenDeathChecks <= 0.0f)
             {
