@@ -27,6 +27,7 @@ public class GameState
         AvailableCrops.Add(new Crop("Crop_3"));
         AvailableCrops.Add(new Crop("Crop_4"));
         AvailableCrops.Add(new Crop("Crop_5"));
+        numberOfCrops = AvailableCrops.Count;
     }
 
 //  7. Implement the following functions in the GameState class:
@@ -45,15 +46,25 @@ public class GameState
 //				   the crop. If there are not enough funds then it must return false.
 //  			2. If there are enough funds then it must update the player's funds, 
 //				   plant a new crop on the tile and return true.
-    public bool PlantCrop (string _uniqueId_, MonoBehaviour cropToPlant)
+    public bool PlantCrop (string _uniqueId, MonoBehaviour cropToPlant)
     {
+        Crop CropInfo;
+
+        for (int value = 0; value <= 5; ++ value)
+        {
+            if(AvailableCrops[value].UniqueId == _uniqueId)
+            {
+                CropInfo = AvailableCrops[value];
+            }
+        }
+
         if (cropToPlant == true)
         {
-            return true;
+            return false;
         }
         else
         {
-            return false;
+            return true;
         }
     }
 
@@ -61,10 +72,6 @@ public class GameState
 //  		i.   The function takes a single parameter that is a MonoBehaviour 
 //				 representing the tile to clear.
 //  		ii.  The function has no return value. 
-    public void ClearCrop (MonoBehaviour tileToClear)
-    {
-        tileToClear = null;
-    }
   
 //  	c. AttemptToHarvestCrop - Harvests a crop on a specific tile (if the crop is present).
 //  		i.   The function takes a single parameter that is a MonoBehaviour representing 
@@ -75,13 +82,6 @@ public class GameState
 //  			2. Update the player's funds based upon the value of the crop at the time it 
 //				   was cleared.
 //  			3. Clear the crop from the tile.
-    public void AttemptToHarvestCrop (MonoBehaviour tileToHarvest)
-    {
-        if (tileToHarvest != null)      //not right
-        {
-            tileToHarvest = null;      //not right
-        }
-    }
 
 //  	d. Update - Updates the state of all of the crops.
 //  		i.   The function takes a single parameter that represents the time elapsed 
@@ -101,10 +101,6 @@ public class GameState
 //  		ii.  The function returns no values.
 //  		iii. The function must locate the crop for the specific tile and must 
 //				 retrieve the required information.
-    public void GetCropState (MonoBehaviour tileDetails, float maturityPercentage, out bool isMature, bool isDead)
-    {
-
-    }
 
 //  	f. UniqueIdForCropAtIndex - Retrieves the unique identifier for an available crop.
 //  		i.   The function takes a single parameter that is an integer. The integer is 
