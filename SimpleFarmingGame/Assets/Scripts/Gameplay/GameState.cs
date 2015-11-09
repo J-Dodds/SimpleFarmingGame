@@ -86,6 +86,14 @@ public class GameState
 //  			2. Update the player's funds based upon the value of the crop at the time it 
 //				   was cleared.
 //  			3. Clear the crop from the tile.
+    public void AttemptToHarvestCrop (MonoBehaviour tileToHarvest)
+    {
+        if(PlantedCrops[tileToHarvest] == true)
+        {
+            Money = Money + PlantedCrops[tileToHarvest].Value;
+            PlantedCrops.Remove(tileToHarvest);
+        }
+    }
 
 //  	d. Update - Updates the state of all of the crops.
 //  		i.   The function takes a single parameter that represents the time elapsed 
