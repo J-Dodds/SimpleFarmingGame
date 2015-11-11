@@ -134,4 +134,10 @@ public class GameState
 //  			4. An integer that is the cost of the crop. This is an out parameter.
 //  		ii.  The function must locate the crop in the AvailableCrops list and must 
 //				 then retrieve the required information.
+    public void GetInfoForCropAtIndex(int indexOfCrop, out string uniqueId, string cropName, int cropCost)
+    {
+        AvailableCrops[CropIndex].uniqueId;
+        AvailableCrops[CropIndex].cropName;
+        AvailableCrops[CropIndex].cropCost;
+    }
 }
