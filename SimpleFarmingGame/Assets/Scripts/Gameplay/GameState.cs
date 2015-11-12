@@ -99,7 +99,10 @@ public class GameState
 //  		iii. The function must update all of the crops.
     public void Update(float timeElapsed)
     {
-        PlantedCrops.Update(timeElapsed);
+        foreach(KeyValuePair<MonoBehaviour, Crop> cropPresent in PlantedCrops)
+        {
+            cropPresent.Value.Update(timeElapsed);
+        }
     }
 
 //  	e. GetCropState - Retrieves the current state of a crop on a specific tile.
