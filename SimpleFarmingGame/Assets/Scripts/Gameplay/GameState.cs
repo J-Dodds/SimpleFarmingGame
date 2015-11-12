@@ -48,7 +48,7 @@ public class GameState
 //				   plant a new crop on the tile and return true.
     public bool PlantCrop (string _uniqueId, MonoBehaviour cropToPlant)
     {
-        Crop CropInfo;
+        Crop CropInfo = null;
 
         for (int value = 0; value <= 5; ++ value)
         {
@@ -64,6 +64,7 @@ public class GameState
         }
         else
         {
+            Money = Money - CropInfo.Cost;
             return true;
         }
     }
