@@ -88,11 +88,8 @@ public class GameState
 //  			3. Clear the crop from the tile.
     public void AttemptToHarvestCrop (MonoBehaviour tileToHarvest)
     {
-        if(PlantedCrops[tileToHarvest] == true)
-        {
             Money = Money + PlantedCrops[tileToHarvest].Value;
             PlantedCrops.Remove(tileToHarvest);
-        }
     }
 
 //  	d. Update - Updates the state of all of the crops.
@@ -102,7 +99,7 @@ public class GameState
 //  		iii. The function must update all of the crops.
     public void Update(float timeElapsed)
     {
-        Crop.Update(timeElapsed);
+        PlantedCrops.Update(timeElapsed);
     }
 
 //  	e. GetCropState - Retrieves the current state of a crop on a specific tile.
@@ -116,11 +113,11 @@ public class GameState
 //  		ii.  The function returns no values.
 //  		iii. The function must locate the crop for the specific tile and must 
 //				 retrieve the required information.
-    public void GetCropState (MonoBehaviour cropDetail, out float maturityPercentage, bool isMature, bool isDead)
+    public void GetCropState (MonoBehaviour tileDetail, out float maturityPercentage, bool isMature, bool isDead)
     {
-        PlantedCrops[cropDetail].isMature;
-        PlantedCrops[cropDetail].isDead;
-        PlantedCrops[cropDetail].maturityPercentage;
+        isMature = PlantedCrops[tileDetail].IsMature;
+        isDead = PlantedCrops[tileDetail].IsDead;
+        maturityPercentage = PlantedCrops[tileDetail].MaturityPercentage;
     }
 
 //  	f. UniqueIdForCropAtIndex - Retrieves the unique identifier for an available crop.
@@ -129,6 +126,7 @@ public class GameState
 //				 are being retrieved for.
 //  		ii.  The function returns a string that is the unique identifier for the crop 
 //				 at the specified index.
+
 
 //  	g. GetInfoForCropAtIndex - Retrieves the details for an available crop.
 //  		i.   The function returns no values but takes four parameters:
