@@ -30,11 +30,13 @@ public class GameState
     {
         Crop CropInfo = null;
 
+        //Checks to see if tile is empty
         if (PlantedCrops.ContainsKey(tileToPlant))
         {
             return false;
         }
 
+        //Gives CropInfo a Crop value
         for (int value = 0; value < 5; ++value)
         {
             if (AvailableCrops[value].UniqueId == _uniqueId)
@@ -42,7 +44,8 @@ public class GameState
                 CropInfo = AvailableCrops[value];
             }
         }
-
+        
+        //If no crop is present and player has enough money, plant crop and decrease money
         if (CropInfo != null && Money > CropInfo.Cost)
         {
             PlantedCrops.Add(tileToPlant, new Crop(CropInfo));
