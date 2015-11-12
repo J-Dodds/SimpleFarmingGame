@@ -16,12 +16,12 @@ public class GameState
 //Populate AvailableCrops list, creating UniqueIds for Crops
     public GameState (int numberOfCrops)
     {
-        Money = 500;
+        Money = 1000;
+        AvailableCrops.Add(new Crop("Crop_0"));
         AvailableCrops.Add(new Crop("Crop_1"));
         AvailableCrops.Add(new Crop("Crop_2"));
         AvailableCrops.Add(new Crop("Crop_3"));
         AvailableCrops.Add(new Crop("Crop_4"));
-        AvailableCrops.Add(new Crop("Crop_5"));
         numberOfCrops = AvailableCrops.Count;
     }
 
@@ -34,13 +34,8 @@ public class GameState
         {
             return false;
         }
-        else
-        {
-            Money = Money - CropInfo.Cost;
-            return true;
-        }
 
-        for (int value = 0; value <= 5; ++value)
+        for (int value = 0; value < 5; ++value)
         {
             if (AvailableCrops[value].UniqueId == _uniqueId)
             {
@@ -48,7 +43,16 @@ public class GameState
             }
         }
 
-        PlantedCrops.Add(new Crop(CropInfo));
+        if (CropInfo != null && Money > CropInfo.Cost)
+        {
+            PlantedCrops.Add(tileToPlant, new Crop(CropInfo));
+            Money = Money - CropInfo.Cost;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 //Function for removing a crop, without gaining money from it
