@@ -16,7 +16,7 @@ public class GameState
 //Populate AvailableCrops list, creating UniqueIds for Crops
     public GameState (int numberOfCrops)
     {
-        Money = 1000;
+        Money = 2000;
         AvailableCrops.Add(new Crop("Crop_0"));
         AvailableCrops.Add(new Crop("Crop_1"));
         AvailableCrops.Add(new Crop("Crop_2"));
@@ -68,7 +68,7 @@ public class GameState
             PlantedCrops.Remove(tileToHarvest);
     }
 
-// Updates each crops vale, based on the amount of values present in PlantedCrops
+// Updates each crops value, based on the amount of values present in PlantedCrops
     public void Update(float timeElapsed)
     {
         foreach(KeyValuePair<MonoBehaviour, Crop> cropPresent in PlantedCrops)
