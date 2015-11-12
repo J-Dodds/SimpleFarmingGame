@@ -26,19 +26,11 @@ public class GameState
     }
 
 // Returns whether or not the crop planting worked, if it works, it takes the cost from the players money
-    public bool PlantCrop (string _uniqueId, MonoBehaviour cropToPlant)
+    public bool PlantCrop (string _uniqueId, MonoBehaviour tileToPlant)
     {
         Crop CropInfo = null;
 
-        for (int value = 0; value <= 5; ++ value)
-        {
-            if(AvailableCrops[value].UniqueId == _uniqueId)
-            {
-                CropInfo = AvailableCrops[value];
-            }
-        }
-
-        if (cropToPlant == true)
+        if (PlantedCrops.ContainsKey(tileToPlant))
         {
             return false;
         }
@@ -47,6 +39,16 @@ public class GameState
             Money = Money - CropInfo.Cost;
             return true;
         }
+
+        for (int value = 0; value <= 5; ++value)
+        {
+            if (AvailableCrops[value].UniqueId == _uniqueId)
+            {
+                CropInfo = AvailableCrops[value];
+            }
+        }
+
+        PlantedCrops.Add(new Crop(CropInfo));
     }
 
 //Function for removing a crop, without gaining money from it
@@ -71,8 +73,8 @@ public class GameState
         }
     }
 
-// Returns current state of a tile
-    public void GetCropState (MonoBehaviour tileDetail, out float maturityPercentage, bool isMature, bool isDead)
+// Current state of a crop on a certain tile
+    public void GetCropState (MonoBehaviour tileDetail, out float maturityPercentage, out bool isMature, out bool isDead)
     {
         isMature = PlantedCrops[tileDetail].IsMature;
         isDead = PlantedCrops[tileDetail].IsDead;
@@ -85,13 +87,11 @@ public class GameState
         return AvailableCrops[cropIndex].UniqueId;
     }
 
-//  	g. GetInfoForCropAtIndex - Retrieves the details for an available crop.
-//  		i.   The function returns no values but takes four parameters:
-//  			1. An integer that is the index of the crop in the AvailableCrops list 
-//				   that the details are being retrieved for.
-//  			2. A string that is the unique identifier for the crop. This is an out parameter.
-//  			3. A string that is the name for the crop. This is an out parameter.
-//  			4. An integer that is the cost of the crop. This is an out parameter.
-//  		ii.  The function must locate the crop in the AvailableCrops list and must 
-//				 then retrieve the required information.
+// Stores information from the crop, based on the crops index number
+    public void GetInfoForCropAtIndex (int indexOfCrop, out string uniqueIdOfCrop, out string nameOfCrop, out int costOfCrop)
+    {
+        uniqueIdOfCrop = AvailableCrops[indexOfCrop].UniqueId;
+        nameOfCrop = AvailableCrops[indexOfCrop].Name;
+        costOfCrop = AvailableCrops[indexOfCrop].Cost;
+    }
 }
