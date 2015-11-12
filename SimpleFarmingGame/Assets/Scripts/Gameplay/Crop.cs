@@ -88,9 +88,9 @@ public class Crop
                 {
                     UniqueId = _uniqueId;
                     TimeToMature = 11f;
-                    DeathChance = 0.1f;
+                    DeathChance = 0.2f;
                     MaturityPercentage = 0.0f;
-                    IntervalBetweenDeathChecks = 5f;
+                    IntervalBetweenDeathChecks = 6f;
                     IsDead = false;
                     Name = "Cheesecake Tree";
                     Cost = 300;
@@ -101,9 +101,9 @@ public class Crop
                 {
                     UniqueId = _uniqueId;
                     TimeToMature = 12f;
-                    DeathChance = 0.1f;
+                    DeathChance = 0.3f;
                     MaturityPercentage = 0.0f;
-                    IntervalBetweenDeathChecks = 5f;
+                    IntervalBetweenDeathChecks = 7f;
                     IsDead = false;
                     Name = "Post-Apocalyptic Peas";
                     Cost = 400;
@@ -114,9 +114,9 @@ public class Crop
                 {
                     UniqueId = _uniqueId;
                     TimeToMature = 13f;
-                    DeathChance = 0.1f;
+                    DeathChance = 0.4f;
                     MaturityPercentage = 0.0f;
-                    IntervalBetweenDeathChecks = 5f;
+                    IntervalBetweenDeathChecks = 8f;
                     IsDead = false;
                     Name = "Radioactive Raddishes";
                     Cost = 500;
@@ -127,9 +127,9 @@ public class Crop
                 {
                     UniqueId = _uniqueId;
                     TimeToMature = 14f;
-                    DeathChance = 0.1f;
+                    DeathChance = 0.5f;
                     MaturityPercentage = 0.0f;
-                    IntervalBetweenDeathChecks = 0.5f;
+                    IntervalBetweenDeathChecks = 9f;
                     IsDead = false;
                     Name = "Grumpy Cat Grass";
                     Cost = 100;
