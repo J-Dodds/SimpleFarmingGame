@@ -37,7 +37,7 @@ public class GameState
         }
 
         //Gives CropInfo a Crop value
-        for (int value = 0; value < 5; ++value)
+        for (int value = 0; value < AvailableCrops.Count; ++value)
         {
             if (AvailableCrops[value].UniqueId == _uniqueId)
             {
@@ -46,7 +46,7 @@ public class GameState
         }
         
         //If no crop is present and player has enough money, plant crop and decrease money
-        if (CropInfo != null && Money > CropInfo.Cost)
+        if (CropInfo != null && Money >= CropInfo.Cost)
         {
             PlantedCrops.Add(tileToPlant, new Crop(CropInfo));
             Money = Money - CropInfo.Cost;
